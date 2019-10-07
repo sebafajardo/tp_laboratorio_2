@@ -1,0 +1,10 @@
+C:\Users\Sebastian\source\repos\MiCalculadora\MiCalculadora\bin\Debug\MiCalculadora.exe.config
+C:\Users\Sebastian\source\repos\MiCalculadora\MiCalculadora\bin\Debug\MiCalculadora.exe
+C:\Users\Sebastian\source\repos\MiCalculadora\MiCalculadora\bin\Debug\MiCalculadora.pdb
+C:\Users\Sebastian\source\repos\MiCalculadora\MiCalculadora\obj\Debug\MiCalculadora.csprojAssemblyReference.cache
+C:\Users\Sebastian\source\repos\MiCalculadora\MiCalculadora\obj\Debug\MiCalculadora.FormCalculadora.resources
+C:\Users\Sebastian\source\repos\MiCalculadora\MiCalculadora\obj\Debug\MiCalculadora.Properties.Resources.resources
+C:\Users\Sebastian\source\repos\MiCalculadora\MiCalculadora\obj\Debug\MiCalculadora.csproj.GenerateResource.cache
+C:\Users\Sebastian\source\repos\MiCalculadora\MiCalculadora\obj\Debug\MiCalculadora.csproj.CoreCompileInputs.cache
+C:\Users\Sebastian\source\repos\MiCalculadora\MiCalculadora\obj\Debug\MiCalculadora.exe
+C:\Users\Sebastian\source\repos\MiCalculadora\MiCalculadora\obj\Debug\MiCalculadora.pdb
