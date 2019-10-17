@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -166,7 +166,7 @@ namespace Entidades_2018
                     return c;
             }
             //valido que no supere el espacio disponible
-            if (c.productos.Count < 6)
+            if (c.productos.Count < 6) //hardcodeo un valor
             {
                 c.productos.Add(p);
                 return c;

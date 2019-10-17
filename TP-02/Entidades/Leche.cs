@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,7 +22,7 @@ namespace Entidades_2018
         public Leche(EMarca marca, string patente, ConsoleColor color)
             : base(patente, marca, color)
         {
-            tipo = ETipo.Entera;
+            this.tipo = ETipo.Entera;
         }
 
         public Leche(EMarca marca, string patente, ConsoleColor color, ETipo tipo)
@@ -42,7 +42,7 @@ namespace Entidades_2018
             }
         }
 
-        public string Mostrar()
+        public string  Mostrar()
         {
             StringBuilder sb = new StringBuilder();
 

@@ -1,4 +1,4 @@
-﻿
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -67,8 +67,8 @@ namespace Entidades_2018
         /// <returns></returns>
         public static bool operator ==(Producto v1, Producto v2)
         {
-            return (v1.codigoDeBarras == v2.codigoDeBarras);
-        }
+            return (v1.codigoDeBarras == v2.codigoDeBarras); // error de logica y reutilizo codigo
+    }
         /// <summary>
         /// Dos productos son distintos si su código de barras es distinto
         /// </summary>
@@ -77,7 +77,7 @@ namespace Entidades_2018
         /// <returns></returns>
         public static bool operator !=(Producto v1, Producto v2)
         {
-            return (v1.codigoDeBarras == v2.codigoDeBarras);
+            return (v1.codigoDeBarras == v2.codigoDeBarras); // error de logica y reutilizo codigo
         }
     }
 }
