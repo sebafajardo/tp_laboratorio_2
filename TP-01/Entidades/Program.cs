@@ -9,21 +9,31 @@ namespace Entidades
     public class Numero
     {
         private double numero;
+        public string setNumero
+        {
+            set
+            {
+                numero = ValidarNumero(value);
+            }
+        }
 
-        public string BinarioDecimal(string binario)
-        {   
-            bool aux;
-            foreach (var c in binario)
+        private bool EsBinario(string binario)
+        {
+            bool es = true;
+            foreach (char c in binario)
             {
                 if (c != '0' && c != '1')
-                    aux = false;
+                    es = false;
             }
-            aux = true;
-
-            if (aux)
+            return es;
+        }
+        public string BinarioDecimal(string binario)
+        {
+            //Valido si es binario, de ser asi lo paso a decimal y lo retorno
+            if (EsBinario(binario))
             {
-                Convert.ToInt32(binario, 2).ToString();
-                return binario;
+                
+                return Convert.ToInt32(binario, 2).ToString();
             }
 
             else
@@ -32,13 +42,14 @@ namespace Entidades
 
         public string DecimalBinario(double numero)
         {
+
+            // Si es negativo lo convierto en positivo
             if (numero < 0)
                 numero = numero - numero - numero;
 
-            numero = Convert.ToInt32(numero);
-
             string bin = "";
 
+            // Lo paso a binario y lo retorno
             while (numero > 0)
             {
                 bin = numero % 2 + bin;
@@ -51,17 +62,21 @@ namespace Entidades
         public string DecimalBinario(string numero)
         {
             int numeroentero;
+
+            //Para mi aca podria ser util llamar al metodo ValidarNumero en lugar de hacer esta conversion
             bool succes = Int32.TryParse(numero, out numeroentero);
 
             if (succes)
             {
                 string bin = "";
 
+                // Si es negativo lo convierto en positivo
                 if (numeroentero < 0)
                 {
                     numeroentero = numeroentero - numeroentero - numeroentero;
                 }
-               
+
+                // Lo paso a binario y lo retorno
                 while (numeroentero > 0)
                 {
                     bin = numeroentero % 2 + bin;
@@ -72,7 +87,7 @@ namespace Entidades
             }
             else
                 return "Valor inválido";
-                   
+
         }
 
         public Numero()
@@ -87,7 +102,7 @@ namespace Entidades
 
         public Numero(string strNumero)
         {
-            
+            Double.TryParse(strNumero, out this.numero);
         }
 
         public static double operator -(Numero n1, Numero n2)
@@ -123,7 +138,7 @@ namespace Entidades
 
     public static class Calculadora
     {
-        public double Operar(Numero num1, Numero num2, string operador)
+        public static double Operar(Numero num1, Numero num2, string operador)
         {
             double result;
             if (operador == "+")
@@ -143,26 +158,26 @@ namespace Entidades
             {
                 result = num1 / num2;
             }
-           
+
             return result;
         }
 
-        private static string ValidarOperador(string operador)
+        private static string ValidarOperador(char operador)
         {
-            if (operador == "+")
+            if (operador.Equals('+'))
             {
                 return "+";
             }
-            else if (operador == "*")
+            else if (operador.Equals('*'))
             {
                 return "*";
 
             }
-            else if (operador == "-")
+            else if (operador.Equals('-'))
             {
                 return "-";
             }
-            else if (operador == "/")
+            else if (operador.Equals('/'))
             {
                 return "/";
             }
@@ -170,10 +185,10 @@ namespace Entidades
             {
                 return "+";
             }
-           
+
         }
-        
-        
+
+
 
     }
 }

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Entidades;
 
 namespace MiCalculadora
 {
@@ -20,61 +21,50 @@ namespace MiCalculadora
         }
 
 
-
-
-
         private static double Operar(string numero1, string numero2, string operador)
         {
-            // En este caso no pude reutilizar codigo porque no sabia como llamar al metodo Operar de la clase Calculadora desde este
-            double num1 = double.Parse(numero1);
-            double num2 = double.Parse(numero2);
-            double result = 0;
-            if (operador == "+")
-            {
-                result = num1 + num2;
-            }
-            else if (operador == "*")
-            {
-                result = num1 * num2;
+            //Creo dos instancias de la clase Numero y las uso como paramrametros del metodo estatico Operar de la clase Calculadora
+            Numero num1 = new Numero(numero1);
+            Numero num2 = new Numero(numero2);
+            double result = Entidades.Calculadora.Operar(num1, num2, operador);
 
-            }
-            else if (operador == "-")
-            {
-                result = num1 - num2;
-            }
-            else if (operador == "/")
-            {
-                result = num1 / num2;
-            }
-            else if (operador == "/" && num2 == 0)
-            {
-                result = double.MinValue;
-            }
             return result;
 
-            
+
         }
         private void btnOperar_Click(object sender, EventArgs e)
         {
-            lblResultado.Text = Convert.ToString(Operar(txtNumero1.Text, txtNumero2.Text, cmbOperador.Text));
+            string resultado = "";
 
+            //Valido si alguno de los dos textbox les estan en blanco, de ser asi tomo como input lblResultado para el segundo valor
+            if (txtNumero1.Text != "" && txtNumero2.Text != "")
+                {
+               resultado = Convert.ToString(Operar(txtNumero1.Text, txtNumero2.Text, cmbOperador.Text));
+            }
+            else if (txtNumero1.Text != "" && txtNumero2.Text == "" ) 
+            { 
+                resultado = Convert.ToString(Operar(txtNumero1.Text, lblResultado.Text, cmbOperador.Text));
+            }
+            else if (txtNumero1.Text == "" && txtNumero2.Text != "")
+            {
+                resultado = Convert.ToString(Operar(txtNumero2.Text, lblResultado.Text, cmbOperador.Text));
+            }
+            else 
+            {
+                MessageBox.Show("Valores ingresados incorrectos");
+            }
+
+            //Limpio y asigno el resultado
+            Limpiar();
+            lblResultado.Text = resultado;
         }
 
 
         private void ConvertirABinario_Click(object sender, EventArgs e)
         {
-            int result = lblResultado.Text.Length > 0 ? int.Parse(lblResultado.Text) : 0;
-            string bin = "";
-            if (lblResultado.Text != "")
-            {
-                result = Convert.ToInt32(lblResultado.Text);
-                while (result > 0)
-                {
-                    bin = result % 2 + bin;
-                    result = result / 2;
-                }
-                lblResultado.Text = bin;
-            }
+            //Creo un objeto de la clase Numero para usar el metodo de conversion y asignarle el resultado al label
+            Numero result = new Numero(lblResultado.Text);
+            lblResultado.Text = result.DecimalBinario(lblResultado.Text);
         }
         private void btnLimpiar_Click(object sender, EventArgs e)
         {
@@ -88,29 +78,18 @@ namespace MiCalculadora
 
         public void ConvertirADecimal_Click(object sender, EventArgs e)
         {
-            bool aux;
-            foreach (var c in lblResultado.Text)
-            {
-                if (c != '0' && c != '1')
-                    aux = false;
-            }
-            aux = true;
-
-            if (aux && lblResultado.Text != "")
-            {
-                lblResultado.Text = Convert.ToInt32(lblResultado.Text, 2).ToString();
-            }
-
-            else lblResultado.Text = "Error";
+            //Creo un objeto de la clase Numero para usar el metodo de conversion y asignarle el resultado al label
+            Numero result = new Numero(lblResultado.Text);
+            lblResultado.Text = result.BinarioDecimal(lblResultado.Text);
         }
 
-        public void  Limpiar()
+        public void Limpiar()
         {
             lblResultado.Text = "";
             txtNumero1.Text = "";
             txtNumero2.Text = "";
             cmbOperador.Text = "";
-            
+
         }
     }
 
