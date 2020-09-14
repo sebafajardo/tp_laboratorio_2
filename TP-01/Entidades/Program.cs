@@ -19,7 +19,10 @@ namespace Entidades
 
         private bool EsBinario(string binario)
         {
+            
             bool es = true;
+
+            //Recorro los caracteres del string para ver si esta compuesto solo de 1 y 0
             foreach (char c in binario)
             {
                 if (c != '0' && c != '1')

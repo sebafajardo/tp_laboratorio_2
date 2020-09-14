@@ -158,7 +158,7 @@
             this.MinimizeBox = false;
             this.Name = "FormCalculadora";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Calculadora de Sebastian Fajardo del curso 2°C";
+            this.Text = "Calculadora de Sebastian Fajardo del curso 2°D";
             this.ResumeLayout(false);
             this.PerformLayout();
 

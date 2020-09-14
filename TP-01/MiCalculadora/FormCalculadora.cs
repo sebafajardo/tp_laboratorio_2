@@ -43,11 +43,11 @@ namespace MiCalculadora
             }
             else if (txtNumero1.Text != "" && txtNumero2.Text == "" ) 
             { 
-                resultado = Convert.ToString(Operar(txtNumero1.Text, lblResultado.Text, cmbOperador.Text));
+                resultado = Convert.ToString(Operar(lblResultado.Text, txtNumero1.Text, cmbOperador.Text));
             }
             else if (txtNumero1.Text == "" && txtNumero2.Text != "")
             {
-                resultado = Convert.ToString(Operar(txtNumero2.Text, lblResultado.Text, cmbOperador.Text));
+                resultado = Convert.ToString(Operar(lblResultado.Text, txtNumero2.Text, cmbOperador.Text));
             }
             else 
             {
